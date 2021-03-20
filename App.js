@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
@@ -10,37 +11,60 @@ import {
   TextInput,
   SafeAreaView,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="light" />
-      <View>
-        {/* <Image style={style.image} source={{uri: }}/> */}
-        <Image style={styles.image} source={require('./assets/wanie.jpeg')} />
-        <View>
-          <Image style={styles.image} source={require('./assets/splash.png')} />
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.profileContainer}>
+          {/* <Image style={style.image} source={{uri: }}/> */}
+          <Image style={styles.image} source={require('./assets/wanie.jpeg')} />
+          <View>
+            <TouchableOpacity activeOpacity={0.3}>
+              <Text>user name : </Text>
+            </TouchableOpacity>
+          </View>
+          <TextInput style={styles.textInput} />
         </View>
-        <TouchableOpacity>
-          <Text>뭐가다를까</Text>
-          <View></View>
-        </TouchableOpacity>
-        <TextInput>hello</TextInput>
-        <TextInput>Open up App.js to start working on your app!</TextInput>
-      </View>
-    </SafeAreaView>
+        <View style={styles.profileContainer}>
+          <Image style={styles.image} source={require('./assets/you.png')} />
+          <View>
+            <TouchableOpacity activeOpacity={0.3}>
+              <Text>user name : </Text>
+            </TouchableOpacity>
+          </View>
+          <TextInput style={styles.textInput} />
+        </View>
+      </SafeAreaView>
+    </NavigationContainer>
   );
+}
+
+{
+  /* <StatusBar style="light" /> */
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   image: {
     width: 100,
     height: 100,
+    marginRight: 10,
+    marginTop: 10,
+  },
+  textInput: {
+    width: 100,
+    height: 50,
+    borderWidth: 1,
   },
 });
