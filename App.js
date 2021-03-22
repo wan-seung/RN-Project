@@ -20,18 +20,27 @@ function DetailsScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
       <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
+        title="Go to Details... again"
+        onPress={() => navigation.push('Details')}
       />
+      <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+        <Text>Go to Details</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Text>Hello Commit</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 }
